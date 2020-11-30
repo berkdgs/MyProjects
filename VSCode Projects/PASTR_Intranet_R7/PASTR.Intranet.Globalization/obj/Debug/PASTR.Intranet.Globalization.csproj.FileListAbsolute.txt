@@ -1,0 +1,10 @@
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\bin\Debug\PASTR.Intranet.Globalization.dll
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\bin\Debug\PASTR.Intranet.Globalization.pdb
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\bin\Debug\tr-TR\PASTR.Intranet.Globalization.resources.dll
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\PASTR.Intranet.Globalization.csprojAssemblyReference.cache
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\PASTR.Intranet.Globalization.Entities.Default.tr-TR.resources
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\PASTR.Intranet.Globalization.csproj.GenerateResource.cache
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\PASTR.Intranet.Globalization.csproj.CoreCompileInputs.cache
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\tr-TR\PASTR.Intranet.Globalization.resources.dll
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\PASTR.Intranet.Globalization.dll
+C:\Users\ibrahim.dogus\Documents\Visual Studio 2017\BilgeAdam\Projeler\PASTR_Intranet_R7\PASTR.Intranet.Globalization\obj\Debug\PASTR.Intranet.Globalization.pdb

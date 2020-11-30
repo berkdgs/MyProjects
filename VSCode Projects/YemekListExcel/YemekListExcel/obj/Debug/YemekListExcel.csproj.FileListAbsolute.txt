@@ -1,0 +1,15 @@
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\YemekListExcel.exe.config
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\YemekListExcel.exe
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\YemekListExcel.pdb
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.csprojAssemblyReference.cache
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.Form1.resources
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.Properties.Resources.resources
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.csproj.GenerateResource.cache
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.csproj.CoreCompileInputs.cache
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.exe
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.pdb
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\EntityFramework.dll
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\EntityFramework.xml
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documents\VS Projects\YemekListExcel\YemekListExcel\obj\Debug\YemekListExcel.csproj.CopyComplete

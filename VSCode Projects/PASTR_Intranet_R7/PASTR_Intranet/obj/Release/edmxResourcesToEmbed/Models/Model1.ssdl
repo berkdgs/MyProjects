@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="oee_3000Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BasicMaterial">
+    <Key>
+      <PropertyRef Name="Plant" />
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="DateFrom" />
+    </Key>
+    <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Plant" Type="nchar" MaxLength="4" Nullable="false" />
+    <Property Name="Material" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Time" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="BaseQuantity" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DateFrom" Type="datetime" Nullable="false" />
+    <Property Name="DateTo" Type="datetime" Nullable="false" />
+    <Property Name="Change" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardHeader">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InputDate" Type="datetime" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="PersonalNumber1" Type="int" />
+    <Property Name="PersonalNumber2" Type="int" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Login" Type="int" Nullable="false" />
+    <Property Name="addCapacity" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardProduction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="Cavity" Type="int" Nullable="false" />
+    <Property Name="PlanQuantity" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CorrectQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="smallint" Nullable="false" />
+    <Property Name="Fields" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardSteps">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="Fields" Type="smallint" Nullable="false" />
+    <Property Name="Events" Type="smallint" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="ProductionID" Type="int" />
+    <Property Name="addCapacity" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Department" />
+    </Key>
+    <Property Name="Department" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Login" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Machine">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SAPName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MachineSteps">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="DescriptionDE" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescriptionEN" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescriptionPL" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescriptionTR" Type="nvarchar" MaxLength="100" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="DescriptionES" Type="nvarchar" MaxLength="100" />
+    <Property Name="DescriptionCN" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="Team" />
+    </Key>
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.ThProductionTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ThProductionTime">
+    <Key>
+      <PropertyRef Name="thMinuten" />
+    </Key>
+    <Property Name="thMinuten" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Department">
+    <Key>
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="department" />
+    </Key>
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="department" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChangePassword" Type="bit" Nullable="false" />
+    <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="AddingSheet" Type="bit" Nullable="false" />
+    <Property Name="MainData" Type="bit" Nullable="false" />
+    <Property Name="Reporting" Type="bit" Nullable="false" />
+    <Property Name="Werk" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Alles" Type="bit" Nullable="false" />
+    <Property Name="ChangeDepartment" Type="bit" Nullable="false" />
+    <Property Name="Import" Type="bit" />
+  </EntityType>
+  <EntityType Name="Version">
+    <Key>
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="Version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="PersonalNumber" />
+    </Key>
+    <Property Name="PersonalNumber" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Company" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Werk" Type="char" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.View_all_stops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_all_stops">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Events" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="Events" Type="smallint" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Time" Type="int" />
+    <Property Name="addCapacity" Type="smallint" Nullable="false" />
+    <Property Name="ThTime" Type="smallint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_DgrUretimTR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_DgrUretimTR">
+    <Key>
+      <PropertyRef Name="Malzeme" />
+      <PropertyRef Name="Üretim Tarihi" />
+      <PropertyRef Name="İş Yeri" />
+    </Key>
+    <Property Name="Malzeme" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Üretim Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Miktar" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="İş Yeri" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_EnjUretimTR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_EnjUretimTR">
+    <Key>
+      <PropertyRef Name="Malzeme" />
+      <PropertyRef Name="Üretim Tarihi" />
+      <PropertyRef Name="İş Yeri" />
+    </Key>
+    <Property Name="Malzeme" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Üretim Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Miktar" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="İş Yeri" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_material' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_material">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="BaseQuantity" />
+    </Key>
+    <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Material" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BaseQuantity" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="MIN" Type="numeric" Precision="22" Scale="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_production' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_production">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+      <PropertyRef Name="Fields" />
+      <PropertyRef Name="SAPName" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="Cavity" Type="int" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="smallint" Nullable="false" />
+    <Property Name="Fields" Type="smallint" Nullable="false" />
+    <Property Name="SAPName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="addCapacity" Type="smallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_production_quantity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_production_quantity">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="IncorrectQuantity" Type="int" />
+    <Property Name="TotalQuantity" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="ProdTime" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_production2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_production2">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="SAPName" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+      <PropertyRef Name="Fields" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SAPName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="Cavity" Type="int" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="smallint" Nullable="false" />
+    <Property Name="Fields" Type="smallint" Nullable="false" />
+    <Property Name="MIN" Type="numeric" Precision="22" Scale="6" />
+    <Property Name="ProductionTime" Type="int" />
+    <Property Name="addCapacity" Type="smallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_production3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_production3">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="SAPName" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+      <PropertyRef Name="Fields" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="ThQuantity" Type="numeric" Precision="18" Scale="12" />
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SAPName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="Cavity" Type="int" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="smallint" Nullable="false" />
+    <Property Name="Fields" Type="smallint" Nullable="false" />
+    <Property Name="MIN" Type="numeric" Precision="22" Scale="6" />
+    <Property Name="ProductionTime" Type="int" />
+    <Property Name="TotalQuantity" Type="numeric" Precision="19" Scale="0" />
+    <Property Name="addCapacity" Type="smallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_remaining_stops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_remaining_stops">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Events" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="Events" Type="smallint" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Time" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_sum_pause' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_sum_pause">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="Events" Type="int" />
+    <Property Name="Time" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_th_machine_time' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_th_machine_time">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="MachineTime" Type="smallint" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.view_TplUretimTR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_TplUretimTR">
+    <Key>
+      <PropertyRef Name="Malzeme" />
+      <PropertyRef Name="Üretim Tarihi" />
+      <PropertyRef Name="İş Yeri" />
+    </Key>
+    <Property Name="Malzeme" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Üretim Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Miktar" Type="numeric" Precision="19" Scale="0" />
+    <Property Name="İş Yeri" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'oee_3000.dbo.View_UretimTR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_UretimTR">
+    <Key>
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="InputDate" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+    </Key>
+    <Property Name="Material" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="KisaMetin" Type="nvarchar" MaxLength="50" />
+    <Property Name="InputDate" Type="datetime" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Personel2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Team" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="Machine" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Aciklama" Type="ntext" />
+    <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cavity" Type="int" Nullable="false" />
+    <Property Name="PlanQuantity" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="CorrectQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="smallint" Nullable="false" />
+    <Property Name="Time" Type="int" />
+  </EntityType>
+  <Association Name="FK_CardSteps_MachineSteps">
+    <End Role="MachineSteps" Type="Self.MachineSteps" Multiplicity="1" />
+    <End Role="CardSteps" Type="Self.CardSteps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MachineSteps">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="CardSteps">
+        <PropertyRef Name="Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_OzetUretim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tarih" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ProductSteps" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stepDate" Type="date" Mode="In" />
+    <Parameter Name="department" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Sure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="field" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="oee_3000ModelStoreContainer">
+    <EntitySet Name="BasicMaterial" EntityType="Self.BasicMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardHeader" EntityType="Self.CardHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardProduction" EntityType="Self.CardProduction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardSteps" EntityType="Self.CardSteps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Machine" EntityType="Self.Machine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MachineSteps" EntityType="Self.MachineSteps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Department" EntityType="Self.User_Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Version" EntityType="Self.Version" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThProductionTime" EntityType="Self.ThProductionTime" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ThProductionTime].[thMinuten] AS [thMinuten]
+    FROM [dbo].[ThProductionTime] AS [ThProductionTime]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_all_stops" EntityType="Self.View_all_stops" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_all_stops].[DocumentID] AS [DocumentID], 
+    [View_all_stops].[Code] AS [Code], 
+    [View_all_stops].[Events] AS [Events], 
+    [View_all_stops].[ProductionDate] AS [ProductionDate], 
+    [View_all_stops].[Team] AS [Team], 
+    [View_all_stops].[Shift] AS [Shift], 
+    [View_all_stops].[Machine] AS [Machine], 
+    [View_all_stops].[Department] AS [Department], 
+    [View_all_stops].[Time] AS [Time], 
+    [View_all_stops].[addCapacity] AS [addCapacity], 
+    [View_all_stops].[ThTime] AS [ThTime]
+    FROM [dbo].[View_all_stops] AS [View_all_stops]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_DgrUretimTR" EntityType="Self.view_DgrUretimTR" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_DgrUretimTR].[Malzeme] AS [Malzeme], 
+    [view_DgrUretimTR].[Üretim Tarihi] AS [Üretim Tarihi], 
+    [view_DgrUretimTR].[Miktar] AS [Miktar], 
+    [view_DgrUretimTR].[İş Yeri] AS [İş Yeri]
+    FROM [dbo].[view_DgrUretimTR] AS [view_DgrUretimTR]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_EnjUretimTR" EntityType="Self.view_EnjUretimTR" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_EnjUretimTR].[Malzeme] AS [Malzeme], 
+    [view_EnjUretimTR].[Üretim Tarihi] AS [Üretim Tarihi], 
+    [view_EnjUretimTR].[Miktar] AS [Miktar], 
+    [view_EnjUretimTR].[İş Yeri] AS [İş Yeri]
+    FROM [dbo].[view_EnjUretimTR] AS [view_EnjUretimTR]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_material" EntityType="Self.view_material" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_material].[MaterialID] AS [MaterialID], 
+    [view_material].[Time] AS [Time], 
+    [view_material].[Unit] AS [Unit], 
+    [view_material].[Material] AS [Material], 
+    [view_material].[Machine] AS [Machine], 
+    [view_material].[BaseQuantity] AS [BaseQuantity], 
+    [view_material].[Description] AS [Description], 
+    [view_material].[MIN] AS [MIN]
+    FROM [dbo].[view_material] AS [view_material]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_production" EntityType="Self.view_production" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_production].[DocumentID] AS [DocumentID], 
+    [view_production].[ProductionDate] AS [ProductionDate], 
+    [view_production].[Team] AS [Team], 
+    [view_production].[Shift] AS [Shift], 
+    [view_production].[Machine] AS [Machine], 
+    [view_production].[Department] AS [Department], 
+    [view_production].[MaterialID] AS [MaterialID], 
+    [view_production].[Cavity] AS [Cavity], 
+    [view_production].[CorrectQuantity] AS [CorrectQuantity], 
+    [view_production].[IncorrectQuantity] AS [IncorrectQuantity], 
+    [view_production].[Fields] AS [Fields], 
+    [view_production].[SAPName] AS [SAPName], 
+    [view_production].[addCapacity] AS [addCapacity]
+    FROM [dbo].[view_production] AS [view_production]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_production_quantity" EntityType="Self.view_production_quantity" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_production_quantity].[DocumentID] AS [DocumentID], 
+    [view_production_quantity].[CorrectQuantity] AS [CorrectQuantity], 
+    [view_production_quantity].[IncorrectQuantity] AS [IncorrectQuantity], 
+    [view_production_quantity].[TotalQuantity] AS [TotalQuantity], 
+    [view_production_quantity].[ProdTime] AS [ProdTime]
+    FROM [dbo].[view_production_quantity] AS [view_production_quantity]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_production2" EntityType="Self.view_production2" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_production2].[DocumentID] AS [DocumentID], 
+    [view_production2].[ProductionDate] AS [ProductionDate], 
+    [view_production2].[Team] AS [Team], 
+    [view_production2].[Shift] AS [Shift], 
+    [view_production2].[Machine] AS [Machine], 
+    [view_production2].[Department] AS [Department], 
+    [view_production2].[SAPName] AS [SAPName], 
+    [view_production2].[MaterialID] AS [MaterialID], 
+    [view_production2].[Cavity] AS [Cavity], 
+    [view_production2].[CorrectQuantity] AS [CorrectQuantity], 
+    [view_production2].[IncorrectQuantity] AS [IncorrectQuantity], 
+    [view_production2].[Fields] AS [Fields], 
+    [view_production2].[MIN] AS [MIN], 
+    [view_production2].[ProductionTime] AS [ProductionTime], 
+    [view_production2].[addCapacity] AS [addCapacity]
+    FROM [dbo].[view_production2] AS [view_production2]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_production3" EntityType="Self.view_production3" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_production3].[ThQuantity] AS [ThQuantity], 
+    [view_production3].[DocumentID] AS [DocumentID], 
+    [view_production3].[ProductionDate] AS [ProductionDate], 
+    [view_production3].[Team] AS [Team], 
+    [view_production3].[Shift] AS [Shift], 
+    [view_production3].[Machine] AS [Machine], 
+    [view_production3].[Department] AS [Department], 
+    [view_production3].[SAPName] AS [SAPName], 
+    [view_production3].[MaterialID] AS [MaterialID], 
+    [view_production3].[Cavity] AS [Cavity], 
+    [view_production3].[CorrectQuantity] AS [CorrectQuantity], 
+    [view_production3].[IncorrectQuantity] AS [IncorrectQuantity], 
+    [view_production3].[Fields] AS [Fields], 
+    [view_production3].[MIN] AS [MIN], 
+    [view_production3].[ProductionTime] AS [ProductionTime], 
+    [view_production3].[TotalQuantity] AS [TotalQuantity], 
+    [view_production3].[addCapacity] AS [addCapacity]
+    FROM [dbo].[view_production3] AS [view_production3]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_remaining_stops" EntityType="Self.view_remaining_stops" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_remaining_stops].[DocumentID] AS [DocumentID], 
+    [view_remaining_stops].[Code] AS [Code], 
+    [view_remaining_stops].[Events] AS [Events], 
+    [view_remaining_stops].[ProductionDate] AS [ProductionDate], 
+    [view_remaining_stops].[Team] AS [Team], 
+    [view_remaining_stops].[Shift] AS [Shift], 
+    [view_remaining_stops].[Machine] AS [Machine], 
+    [view_remaining_stops].[Department] AS [Department], 
+    [view_remaining_stops].[Time] AS [Time]
+    FROM [dbo].[view_remaining_stops] AS [view_remaining_stops]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_sum_pause" EntityType="Self.view_sum_pause" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_sum_pause].[DocumentID] AS [DocumentID], 
+    [view_sum_pause].[Events] AS [Events], 
+    [view_sum_pause].[Time] AS [Time]
+    FROM [dbo].[view_sum_pause] AS [view_sum_pause]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_th_machine_time" EntityType="Self.view_th_machine_time" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_th_machine_time].[DocumentID] AS [DocumentID], 
+    [view_th_machine_time].[ProductionDate] AS [ProductionDate], 
+    [view_th_machine_time].[MachineTime] AS [MachineTime], 
+    [view_th_machine_time].[Team] AS [Team], 
+    [view_th_machine_time].[Shift] AS [Shift], 
+    [view_th_machine_time].[Machine] AS [Machine], 
+    [view_th_machine_time].[Department] AS [Department]
+    FROM [dbo].[view_th_machine_time] AS [view_th_machine_time]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_TplUretimTR" EntityType="Self.view_TplUretimTR" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_TplUretimTR].[Malzeme] AS [Malzeme], 
+    [view_TplUretimTR].[Üretim Tarihi] AS [Üretim Tarihi], 
+    [view_TplUretimTR].[Miktar] AS [Miktar], 
+    [view_TplUretimTR].[İş Yeri] AS [İş Yeri]
+    FROM [dbo].[view_TplUretimTR] AS [view_TplUretimTR]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_UretimTR" EntityType="Self.View_UretimTR" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_UretimTR].[Material] AS [Material], 
+    [View_UretimTR].[KisaMetin] AS [KisaMetin], 
+    [View_UretimTR].[InputDate] AS [InputDate], 
+    [View_UretimTR].[ProductionDate] AS [ProductionDate], 
+    [View_UretimTR].[Name] AS [Name], 
+    [View_UretimTR].[Personel2] AS [Personel2], 
+    [View_UretimTR].[Team] AS [Team], 
+    [View_UretimTR].[Shift] AS [Shift], 
+    [View_UretimTR].[Machine] AS [Machine], 
+    [View_UretimTR].[Aciklama] AS [Aciklama], 
+    [View_UretimTR].[Department] AS [Department], 
+    [View_UretimTR].[Cavity] AS [Cavity], 
+    [View_UretimTR].[PlanQuantity] AS [PlanQuantity], 
+    [View_UretimTR].[CorrectQuantity] AS [CorrectQuantity], 
+    [View_UretimTR].[IncorrectQuantity] AS [IncorrectQuantity], 
+    [View_UretimTR].[Time] AS [Time]
+    FROM [dbo].[View_UretimTR] AS [View_UretimTR]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CardSteps_MachineSteps" Association="Self.FK_CardSteps_MachineSteps">
+      <End Role="MachineSteps" EntitySet="MachineSteps" />
+      <End Role="CardSteps" EntitySet="CardSteps" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

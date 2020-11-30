@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="oee_3000Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BasicMaterial">
+    <Key>
+      <PropertyRef Name="Plant" />
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="DateFrom" />
+    </Key>
+    <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Plant" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Material" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BaseQuantity" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Change" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardHeader">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InputDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PersonalNumber1" Type="Int32" />
+    <Property Name="PersonalNumber2" Type="Int32" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="Int32" Nullable="false" />
+    <Property Name="addCapacity" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardProduction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="MaterialID" Type="Int32" Nullable="false" />
+    <Property Name="Cavity" Type="Int32" Nullable="false" />
+    <Property Name="PlanQuantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CorrectQuantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="Int16" Nullable="false" />
+    <Property Name="Fields" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardSteps">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="Fields" Type="Int16" Nullable="false" />
+    <Property Name="Events" Type="Int16" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="ProductionID" Type="Int32" />
+    <Property Name="addCapacity" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="MachineSteps" Relationship="Self.FK_CardSteps_MachineSteps" FromRole="CardSteps" ToRole="MachineSteps" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Department1" />
+    </Key>
+    <Property Name="Department1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Login" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Machine">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SAPName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MachineSteps">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="DescriptionDE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DescriptionEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionPL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionTR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="DescriptionES" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionCN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CardSteps" Relationship="Self.FK_CardSteps_MachineSteps" FromRole="MachineSteps" ToRole="CardSteps" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="Team" />
+    </Key>
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Department">
+    <Key>
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="department" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="department" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChangePassword" Type="Boolean" Nullable="false" />
+    <Property Name="ChangeDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="AddingSheet" Type="Boolean" Nullable="false" />
+    <Property Name="MainData" Type="Boolean" Nullable="false" />
+    <Property Name="Reporting" Type="Boolean" Nullable="false" />
+    <Property Name="Werk" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Alles" Type="Boolean" Nullable="false" />
+    <Property Name="ChangeDepartment" Type="Boolean" Nullable="false" />
+    <Property Name="Import" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Version">
+    <Key>
+      <PropertyRef Name="Version1" />
+    </Key>
+    <Property Name="Version1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="PersonalNumber" />
+    </Key>
+    <Property Name="PersonalNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Company" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Werk" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThProductionTime">
+    <Key>
+      <PropertyRef Name="thMinuten" />
+    </Key>
+    <Property Name="thMinuten" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_all_stops">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Events" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="Events" Type="Int16" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Time" Type="Int32" />
+    <Property Name="addCapacity" Type="Int16" Nullable="false" />
+    <Property Name="ThTime" Type="Int16" />
+  </EntityType>
+  <EntityType Name="view_DgrUretimTR">
+    <Key>
+      <PropertyRef Name="Malzeme" />
+      <PropertyRef Name="Üretim_Tarihi" />
+      <PropertyRef Name="İş_Yeri" />
+    </Key>
+    <Property Name="Malzeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Üretim_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Miktar" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="İş_Yeri" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_EnjUretimTR">
+    <Key>
+      <PropertyRef Name="Malzeme" />
+      <PropertyRef Name="Üretim_Tarihi" />
+      <PropertyRef Name="İş_Yeri" />
+    </Key>
+    <Property Name="Malzeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Üretim_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Miktar" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="İş_Yeri" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_material">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="BaseQuantity" />
+    </Key>
+    <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Material" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BaseQuantity" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MIN" Type="Decimal" Precision="22" Scale="6" />
+  </EntityType>
+  <EntityType Name="view_production">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+      <PropertyRef Name="Fields" />
+      <PropertyRef Name="SAPName" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialID" Type="Int32" Nullable="false" />
+    <Property Name="Cavity" Type="Int32" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="Int16" Nullable="false" />
+    <Property Name="Fields" Type="Int16" Nullable="false" />
+    <Property Name="SAPName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="addCapacity" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_production_quantity">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IncorrectQuantity" Type="Int32" />
+    <Property Name="TotalQuantity" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ProdTime" Type="Int32" />
+  </EntityType>
+  <EntityType Name="view_production2">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="SAPName" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+      <PropertyRef Name="Fields" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SAPName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialID" Type="Int32" Nullable="false" />
+    <Property Name="Cavity" Type="Int32" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="Int16" Nullable="false" />
+    <Property Name="Fields" Type="Int16" Nullable="false" />
+    <Property Name="MIN" Type="Decimal" Precision="22" Scale="6" />
+    <Property Name="ProductionTime" Type="Int32" />
+    <Property Name="addCapacity" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_production3">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="SAPName" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+      <PropertyRef Name="Fields" />
+      <PropertyRef Name="addCapacity" />
+    </Key>
+    <Property Name="ThQuantity" Type="Decimal" Precision="18" Scale="12" />
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SAPName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialID" Type="Int32" Nullable="false" />
+    <Property Name="Cavity" Type="Int32" Nullable="false" />
+    <Property Name="CorrectQuantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IncorrectQuantity" Type="Int16" Nullable="false" />
+    <Property Name="Fields" Type="Int16" Nullable="false" />
+    <Property Name="MIN" Type="Decimal" Precision="22" Scale="6" />
+    <Property Name="ProductionTime" Type="Int32" />
+    <Property Name="TotalQuantity" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="addCapacity" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_remaining_stops">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Events" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="Events" Type="Int16" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Time" Type="Int32" />
+  </EntityType>
+  <EntityType Name="view_sum_pause">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="Events" Type="Int32" />
+    <Property Name="Time" Type="Int32" />
+  </EntityType>
+  <EntityType Name="view_th_machine_time">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+    </Key>
+    <Property Name="DocumentID" Type="Int32" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MachineTime" Type="Int16" />
+    <Property Name="Team" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_TplUretimTR">
+    <Key>
+      <PropertyRef Name="Malzeme" />
+      <PropertyRef Name="Üretim_Tarihi" />
+      <PropertyRef Name="İş_Yeri" />
+    </Key>
+    <Property Name="Malzeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Üretim_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Miktar" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="İş_Yeri" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CardSteps_MachineSteps">
+    <End Role="MachineSteps" Type="Self.MachineSteps" Multiplicity="1" />
+    <End Role="CardSteps" Type="Self.CardSteps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MachineSteps">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="CardSteps">
+        <PropertyRef Name="Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="oeeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BasicMaterial" EntityType="Self.BasicMaterial" />
+    <EntitySet Name="CardHeader" EntityType="Self.CardHeader" />
+    <EntitySet Name="CardProduction" EntityType="Self.CardProduction" />
+    <EntitySet Name="CardSteps" EntityType="Self.CardSteps" />
+    <EntitySet Name="Department" EntityType="Self.Department" />
+    <EntitySet Name="History" EntityType="Self.History" />
+    <EntitySet Name="Machine" EntityType="Self.Machine" />
+    <EntitySet Name="MachineSteps" EntityType="Self.MachineSteps" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Teams" EntityType="Self.Teams" />
+    <EntitySet Name="User_Department" EntityType="Self.User_Department" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Version" EntityType="Self.Version" />
+    <EntitySet Name="Workers" EntityType="Self.Workers" />
+    <EntitySet Name="ThProductionTime" EntityType="Self.ThProductionTime" />
+    <EntitySet Name="View_all_stops" EntityType="Self.View_all_stops" />
+    <EntitySet Name="view_DgrUretimTR" EntityType="Self.view_DgrUretimTR" />
+    <EntitySet Name="view_EnjUretimTR" EntityType="Self.view_EnjUretimTR" />
+    <EntitySet Name="view_material" EntityType="Self.view_material" />
+    <EntitySet Name="view_production" EntityType="Self.view_production" />
+    <EntitySet Name="view_production_quantity" EntityType="Self.view_production_quantity" />
+    <EntitySet Name="view_production2" EntityType="Self.view_production2" />
+    <EntitySet Name="view_production3" EntityType="Self.view_production3" />
+    <EntitySet Name="view_remaining_stops" EntityType="Self.view_remaining_stops" />
+    <EntitySet Name="view_sum_pause" EntityType="Self.view_sum_pause" />
+    <EntitySet Name="view_th_machine_time" EntityType="Self.view_th_machine_time" />
+    <EntitySet Name="view_TplUretimTR" EntityType="Self.view_TplUretimTR" />
+    <AssociationSet Name="FK_CardSteps_MachineSteps" Association="Self.FK_CardSteps_MachineSteps">
+      <End Role="MachineSteps" EntitySet="MachineSteps" />
+      <End Role="CardSteps" EntitySet="CardSteps" />
+    </AssociationSet>
+    <FunctionImport Name="sp_ProductSteps" ReturnType="Collection(oee_3000Model.sp_ProductSteps_Result)">
+      <Parameter Name="stepDate" Mode="In" Type="DateTime" />
+      <Parameter Name="department" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_OzetUretim" ReturnType="Collection(oee_3000Model.sp_OzetUretim_Result)">
+      <Parameter Name="tarih" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="View_UretimTR" EntityType="oee_3000Model.View_UretimTR" />
+  </EntityContainer>
+  <ComplexType Name="sp_ProductSteps_Result">
+    <Property Type="DateTime" Name="ProductionDate" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ProductionID" Nullable="true" />
+    <Property Type="Int32" Name="DocumentID" Nullable="false" />
+    <Property Type="Int32" Name="Shift" Nullable="false" />
+    <Property Type="String" Name="Department" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Machine" Nullable="false" MaxLength="30" />
+    <Property Type="Decimal" Name="Code" Nullable="false" Precision="3" Scale="0" />
+    <Property Type="String" Name="DescriptionTR" Nullable="true" MaxLength="100" />
+    <Property Type="Int16" Name="Events" Nullable="false" />
+    <Property Type="Int32" Name="Time" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_OzetUretim_Result">
+    <Property Type="String" Name="Department" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="ProductionDate" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="tpUretim" Nullable="true" Precision="38" Scale="0" />
+    <Property Type="Int32" Name="tpHatali" Nullable="true" />
+    <Property Type="Int32" Name="tpSure" Nullable="true" />
+    <Property Type="Decimal" Name="OrtalamaUretimSuresi" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="tpDurus" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="View_UretimTR">
+    <Key>
+      <PropertyRef Name="Material" />
+      <PropertyRef Name="InputDate" />
+      <PropertyRef Name="ProductionDate" />
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="Machine" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="Cavity" />
+      <PropertyRef Name="CorrectQuantity" />
+      <PropertyRef Name="IncorrectQuantity" />
+    </Key>
+    <Property Name="Material" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="KisaMetin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InputDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Personel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Team" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Machine" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Cavity" Type="Int32" Nullable="false" />
+    <Property Name="PlanQuantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CorrectQuantity" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="IncorrectQuantity" Type="Int16" Nullable="false" />
+    <Property Name="Time" Type="Int32" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,7 @@
+        public Validator()
+        {
+            RuleFor(x => x.Name).NotNull().WithMessage("Ad alaný boþ geçilemez!");
+            RuleFor(x => x.LastName).NotNull().WithMessage("Soyad alaný boþ geçilemez!");
+            RuleFor(x => x.BirthDate).NotNull().LessThanOrEqualTo(DateTime.Now.AddYears(-18)).WithMessage("Doðum tarihi " + DateTime.Now.AddYears(-18) + " tarihinden daha yakýn olamaz!");
+            RuleFor(x => x.TCKN).Length(11, 11).WithMessage("T.C. Kimlik no 11 karekterden farklý olamaz!");
+        }

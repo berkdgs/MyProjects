@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebTrainning_1.Models.Blog>
+@{
+    ViewBag.Title = "Index ";
+}
+
+<h2>Contents</h2>
+
+@foreach (var i in Model)
+{
+    <p>
+        @i.Title
+    </p>
+}

@@ -1,0 +1,28 @@
+﻿@model Notification
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="row">
+	
+    <div class="col-lg-5 col-md-5 col-sm-8 col-xs-10">
+        <h2 class="h1 bg-primary text-center panel-heading">Bildirim Aç</h2>
+        @using (Html.BeginForm("Add", "Notification", new { area = "Maintenance" }, FormMethod.Post, new { @class = "form-group" }))
+        {
+            <div class="form-group form-group-sm">
+                @Html.LabelFor(x => x.Problem, "Hata Açıklaması")
+                @Html.TextAreaFor(x => x.Problem, new { @class = "form-control" })
+            </div>
+            <div class="form-group form-group-sm">
+                @Html.LabelFor(x => x.Machine, "Makine Seçiniz...")
+                @Html.DropDownListFor(x => x.Machine.Id, (List<SelectListItem>)ViewBag.MachineList, new { @class = "form-control" })
+            </div>
+            <div class="form-group form-group-sm">
+                @Html.LabelFor(x => x.NoticeStatus, "Makine Çalışıyor mu?")
+                @Html.CheckBoxFor(x => x.NoticeStatus, new {@class = "form-control"})
+            </div>
+            <input class="btn btn-success btn-sm" type="submit" name="btnKaydet" value="Kaydet" />
+        }
+    </div>
+</div>
+

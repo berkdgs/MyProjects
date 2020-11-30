@@ -1,0 +1,67 @@
+﻿@model Person
+@{
+	ViewBag.Title = "Çalışan Ekle";
+}
+
+<h2>Personel Ekleme</h2>
+@using (Html.BeginForm("Add", "Home", new { area = "Human" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	<div class="row">
+		<div class="col-md-3 col-lg-3 col-sm-5 col-xs-6">
+
+			@Html.AntiForgeryToken()
+
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			<div class="form-horizontal">
+				<div class="form-group form-horizontal">
+					@Html.LabelFor(x => x.Name, "Adı:")
+					@Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+					@Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.LastName, "Soyadı:")
+					@Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+					@Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.TCKN, "T.C. Kimlik No:")
+					@Html.TextBoxFor(x => x.TCKN, new { @class = "form-control" })
+					@Html.ValidationMessageFor(x => x.TCKN, "", new { @class = "text-danger" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.Gender, "Cinsiyeti: Erkek ?")
+					@Html.CheckBoxFor(x => x.Gender)
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.BirthDate, "Doğum Tarihi:")
+					@Html.TextBoxFor(x => x.BirthDate, new { @class = "form-control", type = "date", min = DateTime.Now.Date.AddYears(-100).ToString("yyyy-MM-dd"), max = DateTime.Now.Date.AddYears(-18).ToString("yyyy-MM-dd") })
+					@Html.ValidationMessageFor(x => x.BirthDate, "", new { @class = "text-danger" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.DepartmentId, "Departmanı Seçiniz...")
+					@Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)TempData["Departments"], new { @class = "form-control" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.PositionId, "Pozisyonu Seçiniz...")
+					@Html.DropDownListFor(x => x.PositionId, (List<SelectListItem>)TempData["Positions"], new { @class = "form-control" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(x => x.ImagePath, "Fotoğrafı Seçiniz...")
+					<input type="file" name="image" onchange="$('#imagePerson')[0].src = window.URL.createObjectURL(this.files[0])"/>
+				</div>
+				<input type="submit" value="Kaydet" class="btn btn-success" />
+			</div>
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-5 col-xs-6">
+			<img id="imagePerson" src="~/images/Uploads/People/user.jpg" alt="person" width="300" height="400" style="margin-top:23px;"/>
+		</div>
+	</div>
+}
+
+@section validateScripts
+{
+	<script src="~/Scripts/jquery.validate.min.js"></script>
+	<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+

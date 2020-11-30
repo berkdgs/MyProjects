@@ -1,0 +1,19 @@
+﻿@model Position
+@{
+    ViewBag.Title = "Pozisyon Ekle";
+}
+
+<h2>Pozisyon Ekle</h2>
+@using (Html.BeginForm("Add", "Position", new { area = "Human" }, FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(x => x.Name, "Ad")
+		@Html.TextBoxFor(x => x.Name, new { @class = "form-control"})
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(x => x.Description, "Açıklama")
+		@Html.TextBoxFor(x => x.Description, new { @class = "form-control"})
+	</div>
+	<button class="btn btn-success" name="btnKaydet">Kaydet</button>
+}
+

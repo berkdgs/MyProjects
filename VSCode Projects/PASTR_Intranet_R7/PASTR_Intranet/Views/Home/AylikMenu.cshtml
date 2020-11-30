@@ -1,0 +1,48 @@
+﻿
+@{
+	ViewBag.Title = "Aylık Menu";
+}
+@model IEnumerable<YemekMenu>
+
+<div class="container" style="margin-left:-10px">
+	<table class="table table-striped">
+		<thead>
+			<tr class="info">
+				<th colspan="12">
+					<h4 class="text-center text-primary bg-info">
+						Aylık Yemek Menüsü - <b>@CultureInfo.GetCultureInfo("tr-TR").DateTimeFormat.GetMonthName(DateTime.Today.Month)</b>
+					</h4>
+				</th>
+			</tr>
+			<tr class="info">
+				<th>Tarih</th>
+				<th>Çorbalar</th>
+				<th>Kalori</th>
+				<th>Ana Yemek</th>
+				<th>Kalori</th>
+				<th>Ana Yemek</th>
+				<th>Kalori</th>
+				<th>Soğuklar</th>
+				<th>Kalori</th>
+				<th>Salatar/Tatlılar</th>
+				<th>Kalori</th>
+				<th>Toplam Kalori</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Tarih.Date.ToString("dd/MM/yyyy")</td>
+					@for (int i = 0; i < item.Yemekler.Count; i++)
+					{
+						<td>@item.Yemekler[i]</td>
+						<td>@item.Kaloriler[i]</td>
+					}
+					<td>@item.ToplamKalori</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+

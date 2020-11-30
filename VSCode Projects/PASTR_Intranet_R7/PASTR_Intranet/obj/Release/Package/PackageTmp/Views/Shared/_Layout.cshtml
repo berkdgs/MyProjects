@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title - PAS-TR Intranet</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PASIntranet.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("ajaxScript", false)
+    <style>
+        dt {
+            width: 100px;
+        }
+
+        dd {
+            margin-left: 110px;
+        }
+
+        #sayi {
+            text-align: right;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="container-fluid" style="height:70px;">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header navbar-left">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-default" href="/">
+                            <img src="~/images/logo/pas_logo.gif" alt="logo" style="width:240px;margin-top:2px;" />
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                        <ul class="nav navbar-nav" style="padding-left:30px;">
+                            <li><a href="http://ceoee/">Ana Sayfa</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Üretim<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://ceoee:9820/Production/UretimOzet?tarih=@DateTime.Today.AddDays(-1).ToString()">Üretim Özeti</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="http://ceoee:9820/Production/Malzemeler">Malzemeler</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://ceoee/Maintenance/Home">Bakım İşlemleri</a></li>
+                            <li class="dropdown" style="display:none">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">İnsan Kaynakları<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/HumanResources/Index">Çalışanlarımız</a></li>
+                                </ul>
+                            </li>
+                            <li style="display:none"><a href="#">Satınalma</a></li>
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li style="padding-top:20px;">Merhaba, @User.Identity.Name <span class="glyphicon glyphicon-user"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        @RenderBody()
+        <footer>
+            <hr />
+            <p>&copy; @DateTime.Now.Year - PAS-TR Intranet</p>
+        </footer>
+    </div>
+</body>
+</html>
+@RenderSection("filterScript", false)

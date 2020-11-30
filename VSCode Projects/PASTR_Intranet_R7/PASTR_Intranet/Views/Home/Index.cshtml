@@ -1,0 +1,62 @@
+﻿
+@{
+	ViewBag.Title = "Ana Sayfa";
+}
+
+
+<div class="row">
+	<div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
+
+		<img src="~/images/PasGir.gif" alt="PasGiris" style="width:100%;height:615px;" />
+		@Html.Action("DogumGunu")
+		@*<div id="girisCarousel" class="carousel slide" data-ride="carousel">
+
+			<ol class="carousel-indicators">
+				<li data-target="#girisCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#girisCarousel" data-slide-to="1"></li>
+				<li data-target="#girisCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="~/images/2019Toplu.PNG" alt="2019 Toplu" style="width:100%" />
+					<div class="carousel-caption">
+						<h3>2019 Yılını Karşıladık</h3>
+						<p>Yeni yıl partisini ölümsüzleştirdik!</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="~/images/koymenbatari.jpg" alt="Köymen Bateri" style="width:100%"/>
+					<div class="carousel-caption">
+						<h3>Yeni Yıl Yeni Baterist</h3>
+						<p>CEO'muz Fatih Köymen Hünerlerini Sergiledi</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="~/images/Parti.jpg" alt="Parti" style="width:100%"/>
+					<div class="carousel-caption">
+						<h3>2019 Partisi</h3>
+						<p>Partide çok eğlendik!</p>
+					</div>
+				</div>
+			</div>
+
+			<a class="left carousel-control" href="#girisCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Önceki</span>
+			</a>
+			<a class="right carousel-control" href="#girisCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Sonraki</span>
+			</a>
+		</div>*@
+
+	</div>
+	<div class="col-md-3 col-lg-3 col-sm-3 col-xs-9">
+		@*@Html.Action("GunlukMenu")*@
+		@Html.Action("GunlukKur")
+
+	</div>
+	
+</div>
+

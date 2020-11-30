@@ -1,0 +1,40 @@
+﻿@{
+	ViewBag.Title = "Üretim Duruş Detayları";
+}
+@model List<sp_ProductSteps_Result>
+
+<table class="table table-striped">
+	<tr>
+		<th class="bg-danger text-danger text-center" colspan="6">
+			<h2>
+				Üretim Duruş Detayları - @Model[0].Department - @Model[0].ProductionDate.ToString("dd/MM/yyyy")
+			</h2>
+		</th>
+	</tr>
+	<tr class="danger">
+		<th class="text-center">Vardiya</th>
+		<th>Makine</th>
+		<th class="text-center">Duruş Kodu</th>
+		<th>Duruş Metni</th>
+		<th class="text-center">Tekrarlanma</th>
+		<th class="text-right">Duruş Süresi (dk.)</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td class="text-center">@item.Shift</td>
+			<td>@item.Machine</td>
+			<td class="text-center">@item.Code</td>
+			<td>@item.DescriptionTR</td>
+			<td class="text-center">@item.Events</td>
+			<td class="text-right">@item.Time</td>
+		</tr>
+	}
+	<tr class="danger">
+		<td><a class="btn btn-danger" href="/Production/UretimOzet?tarih=@Model[0].ProductionDate">Önceki Sayfa</a></td>
+		<th colspan="3" class="text-right"><b><i>Toplam :</i></b></th>
+		<th class="text-center">@Model.Sum(x => x.Events)</th>
+		<th class="text-right">@Model.Sum(x => x.Time) </th>
+	</tr>
+</table>
+

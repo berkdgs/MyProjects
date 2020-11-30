@@ -1,0 +1,56 @@
+﻿
+@{
+	ViewBag.Title = "Üretim Detayları";
+}
+@model List<View_UretimTR>
+
+<table class="table table-striped">
+	<tr>
+		<th class="bg-success text-center text-success" colspan="11">
+			<h2>
+				Üretim Detayları - @ViewBag.Departman - @ViewBag.UretimTarihi
+			</h2>
+		</th>
+	</tr>
+	<tr class="success">
+		<th>Malzeme</th>
+		<th>Kısa Metin</th>
+		<th>Makine</th>
+		<th class="text-center">Vardiya</th>
+		<th>Bölüm Sorumlusu</th>
+		<th>Hat Sorumlusu</th>
+		<th class="text-right">Uygun Miktar</th>
+		<th class="text-right">Hatalı Miktar</th>
+		<th class="text-right">Süre (dk.)</th>
+		<th class="text-right">Ortalama Süre (sn.)</th>
+		<th>Açıklama</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.Material</td>
+			<td>@item.KisaMetin</td>
+			<td>@item.Machine</td>
+			<td class="text-center">@item.Shift</td>
+			<td>@item.Name</td>
+			<td>@item.Personel2</td>
+			<td class="text-right">@String.Format("{0:N0}", item.CorrectQuantity)</td>
+			<td class="text-right">@String.Format("{0:N0}", item.IncorrectQuantity)</td>
+			<td class="text-right">@String.Format("{0:N0}", item.Time)</td>
+			<td class="text-right">@String.Format("{0:N2}", (item.Time / (item.CorrectQuantity + item.IncorrectQuantity) * 60))</td>
+			<td>@item.Aciklama</td>
+		</tr>
+	}
+	<tr class="success">
+		<td><a class="btn btn-success" href="/Production/UretimOzet?tarih=@Model[0].ProductionDate">Önceki Sayfa</a></td>
+		<td colspan="5" class="text-right"><b><i>Toplam :</i></b></td>
+		<td class="text-right"><b>@String.Format("{0:N0}", Model.Sum(x => x.CorrectQuantity))</b></td>
+		<td class="text-right"><b>@String.Format("{0:N0}", Model.Sum(x => x.IncorrectQuantity))</b></td>
+		<td class="text-right"><b>@String.Format("{0:N0}", Model.Sum(x => x.Time))</b></td>
+		<td class="text-right"><b>Ø @String.Format("{0:N2}", (Model.Sum(x => x.Time * 60) / Model.Sum(x => x.CorrectQuantity + x.IncorrectQuantity)))</b></td>
+		<td></td>
+	</tr>
+</table>
+
+
+

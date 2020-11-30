@@ -1,0 +1,65 @@
+﻿
+@{
+	ViewBag.Title = "Malzemeler";
+}
+@model	List<BasicMaterial>
+
+
+<div class="container">
+	<input class="form-control" id="txtArama" type="text" placeholder="Arama..." />
+	<table class="table table-striped">
+		<thead class="header">
+			<tr class="info">
+				<th colspan="9"><h2 class="text-center">Malzemeler</h2></th>
+			</tr>
+			<tr class="info">
+				<th>Malzeme Numarası</th>
+				<th>Kısa Metin</th>
+				<th>Makine</th>
+				<th>Taban Miktar</th>
+				<th>Süre</th>
+				<th>Birim</th>
+				<th>Geçerlilik Başlangıç</th>
+				<th>Geçerlilik Sonu</th>
+				<th>Durum</th>
+			</tr>
+		</thead>
+		<tbody id="tbMalzemeler">
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Material</td>
+					<td>@item.Description</td>
+					<td>@item.Machine</td>
+					<td>@item.BaseQuantity</td>
+					<td>@item.Time</td>
+					<td>@item.Unit</td>
+					<td>@item.DateFrom.ToString("dd/MM/yy")</td>
+					<td>@item.DateTo.ToString("dd/MM/yy")</td>
+					@if (item.Active)
+					{
+						<td class="text-success">Kullanımda</td>}
+					else
+					{
+						<td class="text-danger">Kullanılmıyor!</td>}
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+@section filterScript{
+	<script>
+		$(document).ready(function () {
+			debugger
+			$('#txtArama').on("keyup", function () {
+				var value = $(this).val().toLowerCase();
+				$('#tbMalzemeler tr').filter(function () {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
+	</script>
+}
+
+

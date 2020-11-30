@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="oee_3000ModelStoreContainer" CdmEntityContainer="oeeEntities">
+    <EntitySetMapping Name="BasicMaterial">
+      <EntityTypeMapping TypeName="oee_3000Model.BasicMaterial">
+        <MappingFragment StoreEntitySet="BasicMaterial">
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Plant" ColumnName="Plant" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="BaseQuantity" ColumnName="BaseQuantity" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="Change" ColumnName="Change" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardHeader">
+      <EntityTypeMapping TypeName="oee_3000Model.CardHeader">
+        <MappingFragment StoreEntitySet="CardHeader">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="PersonalNumber1" ColumnName="PersonalNumber1" />
+          <ScalarProperty Name="PersonalNumber2" ColumnName="PersonalNumber2" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="addCapacity" ColumnName="addCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardProduction">
+      <EntityTypeMapping TypeName="oee_3000Model.CardProduction">
+        <MappingFragment StoreEntitySet="CardProduction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Cavity" ColumnName="Cavity" />
+          <ScalarProperty Name="PlanQuantity" ColumnName="PlanQuantity" />
+          <ScalarProperty Name="CorrectQuantity" ColumnName="CorrectQuantity" />
+          <ScalarProperty Name="IncorrectQuantity" ColumnName="IncorrectQuantity" />
+          <ScalarProperty Name="Fields" ColumnName="Fields" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardSteps">
+      <EntityTypeMapping TypeName="oee_3000Model.CardSteps">
+        <MappingFragment StoreEntitySet="CardSteps">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Fields" ColumnName="Fields" />
+          <ScalarProperty Name="Events" ColumnName="Events" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ProductionID" ColumnName="ProductionID" />
+          <ScalarProperty Name="addCapacity" ColumnName="addCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="oee_3000Model.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="Department1" ColumnName="Department" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="History">
+      <EntityTypeMapping TypeName="oee_3000Model.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Machine">
+      <EntityTypeMapping TypeName="oee_3000Model.Machine">
+        <MappingFragment StoreEntitySet="Machine">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SAPName" ColumnName="SAPName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MachineSteps">
+      <EntityTypeMapping TypeName="oee_3000Model.MachineSteps">
+        <MappingFragment StoreEntitySet="MachineSteps">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DescriptionDE" ColumnName="DescriptionDE" />
+          <ScalarProperty Name="DescriptionEN" ColumnName="DescriptionEN" />
+          <ScalarProperty Name="DescriptionPL" ColumnName="DescriptionPL" />
+          <ScalarProperty Name="DescriptionTR" ColumnName="DescriptionTR" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DescriptionES" ColumnName="DescriptionES" />
+          <ScalarProperty Name="DescriptionCN" ColumnName="DescriptionCN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="oee_3000Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="oee_3000Model.Teams">
+        <MappingFragment StoreEntitySet="Teams">
+          <ScalarProperty Name="Team" ColumnName="Team" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Department">
+      <EntityTypeMapping TypeName="oee_3000Model.User_Department">
+        <MappingFragment StoreEntitySet="User_Department">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="department" ColumnName="department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="oee_3000Model.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ChangePassword" ColumnName="ChangePassword" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AddingSheet" ColumnName="AddingSheet" />
+          <ScalarProperty Name="MainData" ColumnName="MainData" />
+          <ScalarProperty Name="Reporting" ColumnName="Reporting" />
+          <ScalarProperty Name="Werk" ColumnName="Werk" />
+          <ScalarProperty Name="Alles" ColumnName="Alles" />
+          <ScalarProperty Name="ChangeDepartment" ColumnName="ChangeDepartment" />
+          <ScalarProperty Name="Import" ColumnName="Import" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Version">
+      <EntityTypeMapping TypeName="oee_3000Model.Version">
+        <MappingFragment StoreEntitySet="Version">
+          <ScalarProperty Name="Version1" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="oee_3000Model.Workers">
+        <MappingFragment StoreEntitySet="Workers">
+          <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Werk" ColumnName="Werk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThProductionTime">
+      <EntityTypeMapping TypeName="oee_3000Model.ThProductionTime">
+        <MappingFragment StoreEntitySet="ThProductionTime">
+          <ScalarProperty Name="thMinuten" ColumnName="thMinuten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_all_stops">
+      <EntityTypeMapping TypeName="oee_3000Model.View_all_stops">
+        <MappingFragment StoreEntitySet="View_all_stops">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Events" ColumnName="Events" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="addCapacity" ColumnName="addCapacity" />
+          <ScalarProperty Name="ThTime" ColumnName="ThTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_DgrUretimTR">
+      <EntityTypeMapping TypeName="oee_3000Model.view_DgrUretimTR">
+        <MappingFragment StoreEntitySet="view_DgrUretimTR">
+          <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+          <ScalarProperty Name="Üretim_Tarihi" ColumnName="Üretim Tarihi" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="İş_Yeri" ColumnName="İş Yeri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_EnjUretimTR">
+      <EntityTypeMapping TypeName="oee_3000Model.view_EnjUretimTR">
+        <MappingFragment StoreEntitySet="view_EnjUretimTR">
+          <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+          <ScalarProperty Name="Üretim_Tarihi" ColumnName="Üretim Tarihi" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="İş_Yeri" ColumnName="İş Yeri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_material">
+      <EntityTypeMapping TypeName="oee_3000Model.view_material">
+        <MappingFragment StoreEntitySet="view_material">
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="BaseQuantity" ColumnName="BaseQuantity" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MIN" ColumnName="MIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_production">
+      <EntityTypeMapping TypeName="oee_3000Model.view_production">
+        <MappingFragment StoreEntitySet="view_production">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Cavity" ColumnName="Cavity" />
+          <ScalarProperty Name="CorrectQuantity" ColumnName="CorrectQuantity" />
+          <ScalarProperty Name="IncorrectQuantity" ColumnName="IncorrectQuantity" />
+          <ScalarProperty Name="Fields" ColumnName="Fields" />
+          <ScalarProperty Name="SAPName" ColumnName="SAPName" />
+          <ScalarProperty Name="addCapacity" ColumnName="addCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_production_quantity">
+      <EntityTypeMapping TypeName="oee_3000Model.view_production_quantity">
+        <MappingFragment StoreEntitySet="view_production_quantity">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="CorrectQuantity" ColumnName="CorrectQuantity" />
+          <ScalarProperty Name="IncorrectQuantity" ColumnName="IncorrectQuantity" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+          <ScalarProperty Name="ProdTime" ColumnName="ProdTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_production2">
+      <EntityTypeMapping TypeName="oee_3000Model.view_production2">
+        <MappingFragment StoreEntitySet="view_production2">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="SAPName" ColumnName="SAPName" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Cavity" ColumnName="Cavity" />
+          <ScalarProperty Name="CorrectQuantity" ColumnName="CorrectQuantity" />
+          <ScalarProperty Name="IncorrectQuantity" ColumnName="IncorrectQuantity" />
+          <ScalarProperty Name="Fields" ColumnName="Fields" />
+          <ScalarProperty Name="MIN" ColumnName="MIN" />
+          <ScalarProperty Name="ProductionTime" ColumnName="ProductionTime" />
+          <ScalarProperty Name="addCapacity" ColumnName="addCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_production3">
+      <EntityTypeMapping TypeName="oee_3000Model.view_production3">
+        <MappingFragment StoreEntitySet="view_production3">
+          <ScalarProperty Name="ThQuantity" ColumnName="ThQuantity" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="SAPName" ColumnName="SAPName" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="Cavity" ColumnName="Cavity" />
+          <ScalarProperty Name="CorrectQuantity" ColumnName="CorrectQuantity" />
+          <ScalarProperty Name="IncorrectQuantity" ColumnName="IncorrectQuantity" />
+          <ScalarProperty Name="Fields" ColumnName="Fields" />
+          <ScalarProperty Name="MIN" ColumnName="MIN" />
+          <ScalarProperty Name="ProductionTime" ColumnName="ProductionTime" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+          <ScalarProperty Name="addCapacity" ColumnName="addCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_remaining_stops">
+      <EntityTypeMapping TypeName="oee_3000Model.view_remaining_stops">
+        <MappingFragment StoreEntitySet="view_remaining_stops">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Events" ColumnName="Events" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_sum_pause">
+      <EntityTypeMapping TypeName="oee_3000Model.view_sum_pause">
+        <MappingFragment StoreEntitySet="view_sum_pause">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Events" ColumnName="Events" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_th_machine_time">
+      <EntityTypeMapping TypeName="oee_3000Model.view_th_machine_time">
+        <MappingFragment StoreEntitySet="view_th_machine_time">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="MachineTime" ColumnName="MachineTime" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_TplUretimTR">
+      <EntityTypeMapping TypeName="oee_3000Model.view_TplUretimTR">
+        <MappingFragment StoreEntitySet="view_TplUretimTR">
+          <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+          <ScalarProperty Name="Üretim_Tarihi" ColumnName="Üretim Tarihi" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="İş_Yeri" ColumnName="İş Yeri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ProductSteps" FunctionName="oee_3000Model.Store.sp_ProductSteps">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="oee_3000Model.sp_ProductSteps_Result">
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="ProductionID" ColumnName="ProductionID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DescriptionTR" ColumnName="DescriptionTR" />
+          <ScalarProperty Name="Events" ColumnName="Events" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_OzetUretim" FunctionName="oee_3000Model.Store.sp_OzetUretim">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="oee_3000Model.sp_OzetUretim_Result">
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="tpUretim" ColumnName="tpUretim" />
+          <ScalarProperty Name="tpHatali" ColumnName="tpHatali" />
+          <ScalarProperty Name="tpSure" ColumnName="tpSure" />
+          <ScalarProperty Name="OrtalamaUretimSuresi" ColumnName="OrtalamaUretimSuresi" />
+          <ScalarProperty Name="tpDurus" ColumnName="tpDurus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="View_UretimTR">
+      <EntityTypeMapping TypeName="oee_3000Model.View_UretimTR">
+        <MappingFragment StoreEntitySet="View_UretimTR">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="IncorrectQuantity" ColumnName="IncorrectQuantity" />
+          <ScalarProperty Name="CorrectQuantity" ColumnName="CorrectQuantity" />
+          <ScalarProperty Name="PlanQuantity" ColumnName="PlanQuantity" />
+          <ScalarProperty Name="Cavity" ColumnName="Cavity" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Machine" ColumnName="Machine" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Personel2" ColumnName="Personel2" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="KisaMetin" ColumnName="KisaMetin" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

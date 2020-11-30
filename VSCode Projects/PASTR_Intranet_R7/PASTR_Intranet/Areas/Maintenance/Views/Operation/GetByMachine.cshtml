@@ -1,0 +1,39 @@
+﻿@model List<Operation>
+@{
+	ViewBag.Title = "Bakım/Arıza İşlemleri";
+}
+
+<table class="table table-striped">
+	<caption>
+		<h2>@TempData["Machine"] Makinasındaki Bakım İşlemleri</h2>
+	</caption>
+	<thead>
+		<tr>
+			<th>Problem</th>
+			<th>Yapılan İşlem</th>
+			<th>Bakım Yapan</th>
+			<th>Açılış Tarihi</th>
+			<th>Kapanış Tarihi</th>
+			<th>Durum</th>
+			<th>Süre</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			TimeSpan? totalTime = item.ModifiedDate - item.CreatedDate;
+			<tr>
+				<td>@item.Notification.Problem</td>
+				<td>@item.Process</td>
+				<td>@item.Worker.LongName</td>
+				<td>@item.CreatedDate</td>
+				<td>@item.ModifiedDate</td>
+				<td>@item.ProcessStatu</td>
+				<td>@totalTime.ToString()</td>
+
+			</tr>
+		}
+
+	</tbody>
+</table>

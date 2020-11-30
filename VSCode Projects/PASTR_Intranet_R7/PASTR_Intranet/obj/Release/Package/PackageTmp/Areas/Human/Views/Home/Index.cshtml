@@ -1,0 +1,55 @@
+﻿@model List<Person>
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table table-striped">
+	<caption>
+		<div class="row">
+			<div class="col-sm-10 col-lg-10">
+				<h2>Çalışanlarımız</h2>
+			</div>
+			<div class="col-sm-2 col-lg-2" style="padding:20px;">
+				@Html.ActionLink("Pesonel Ekle", "Add", "Home", new { area = "Human" }, new { @class = "btn btn-success" })
+				@*<a class="btn btn-success" href="/Human/Home/Add">Personel Ekle</a>*@
+				@*<form action="/Human/Home/Add" method="get">
+					<button class="btn btn-success">Personel Ekle</button>
+				</form>*@
+			</div>
+		</div>
+	</caption>
+	<thead>
+		<tr>
+			<th>Fotoğraf</th>
+			<th>Ad</th>
+			<th>Soyad</th>
+			<th>Cinsiyet</th>
+			<th>Doğum Tarihi</th>
+			<th>Departman</th>
+			<th>Unvan</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					<img src="@item.ImagePath" alt="@item.LastName@item.Name" style="width:80px;height:100px;"/>
+				</td>
+				<td>@item.Name</td>
+				<td>@item.LastName</td>
+				<td>@(item.Gender ? "Erkek" : "Kadın") </td>
+				<td>@item.BirthDate.ToString("dd MMMM yyyy")</td>
+				<td>@item.Department.Name</td>
+				<td>@item.Position.Name</td>
+		
+				<td>
+					<a class="btn btn-danger" href="/Human/Home/Delete/@item.Id">Sil</a>
+					<a class="btn btn-warning" href="/Human/Home/Update/@item.Id">Değiştir</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+

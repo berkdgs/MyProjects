@@ -1,0 +1,66 @@
+﻿
+@{
+	ViewBag.Title = "Üretim Özeti";
+}
+@model List<sp_OzetUretim_Result>
+
+<table class="table table-striped">
+	<tr class="success">
+		<td class="text-center" colspan="7" style="margin:0px">
+			<h2>Üretim Özeti - @ViewBag.UretimTarihi</h2>
+		</td>
+
+	</tr>
+	<tr class="success">
+		@using (Html.BeginForm("UretimOzet", "Production", FormMethod.Post, new { @class = "form-group" }))
+		{
+			<td style="padding-top:15px;"><b>Üretim Tarihi Seçiniz:</b></td>
+			<td colspan="2">
+				<input type="date" name="tarih" class="form-control" data-date-format="dd/MM/yyyy" min="2010-01-12" max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+			</td>
+			<td>
+				<button type="submit" name="btnGoster" id="tarih" class="btn btn-info">Göster</button>
+			</td>
+			<td colspan="3"></td>
+		}
+	</tr>
+	<tr>
+		@if (Model.Count != 0)
+		{
+			<td colspan="7" align="center">
+				<img src="@Url.Action("CreateChart", new { tarih = Model[0].ProductionDate.ToString("dd/MM/yyyy") })" alt="test" />
+			</td>
+		}
+	</tr>
+
+	<tr class="success">
+		<th>Üretim Departmanı</th>
+		<th class="text-right">Üretim Miktar</th>
+		<th class="text-right">Hatalı Üretim</th>
+		<th class="text-right">Toplam Üretim Süresi (dk.)</th>
+		<th class="text-right">Ortalama Üretim Süresi (sn.)</th>
+		<th class="text-right">Toplam Duruş Süresi (dk.)</th>
+		<th class="text-center">Detaylar</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.Department</td>
+			<td class="text-right">@String.Format("{0:N0}", item.tpUretim)</td>
+			<td class="text-right">@String.Format("{0:N0}", item.tpHatali)</td>
+			<td class="text-right">@String.Format("{0:N0}", item.tpSure)</td>
+			<td class="text-right">@String.Format("{0:N2}", item.OrtalamaUretimSuresi)</td>
+			<td class="text-right">@String.Format("{0:N0}", item.tpDurus)</td>
+			<td class="text-center">
+				<a class="btn btn-success" style="margin-right:5px;" href="/Production/UretimDetay?department=@item.Department&tarih=@item.ProductionDate">Üretim</a>
+				<a class="btn btn-danger" href="/Production/DurusDetay?department=@item.Department&tarih=@item.ProductionDate">Duruş</a>
+			</td>
+		</tr>
+	}
+
+
+</table>
+
+
+
+

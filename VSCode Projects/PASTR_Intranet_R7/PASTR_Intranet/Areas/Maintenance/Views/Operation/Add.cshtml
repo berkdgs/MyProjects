@@ -1,0 +1,30 @@
+﻿@model Operation
+@{
+	ViewBag.Title = "Bakım Aç";
+}
+
+<div class="row">
+	<div class="col-lg-5 col-md-5 col-sm-7 col-xs-10">
+		<h2>Bakım Aç</h2>
+		@using (Html.BeginForm("Add", "Operation", new { area = "Maintenance" }, FormMethod.Post, new { @class = "form-group-sm" }))
+		{
+			@Html.HiddenFor(x => x.MachineId, new { Value = ((Machine)TempData["Machine"]).Id })
+			@Html.HiddenFor(x => x.ProcessStatu, new { Value = ProcessStatu.Suruyor})
+			<div class="form-group-sm">
+				@Html.LabelFor(x => x.Machine.Name, "Makine Adı")
+				@Html.TextBox("machineName", ((Machine)TempData["Machine"]).Name, new { @readonly = "readonly", @class = "form-control" })
+			</div>
+			<div class="form-group-sm">
+				@Html.LabelFor(x => x.Worker.Name, "Bakım Personeli Adı")
+				@Html.TextBox("workerName", "", new { @class = "form-control" })
+			</div>
+			<div class="form-group-sm">
+				@Html.LabelFor(x => x.Notification.Problem, "Arıza/Bakım Kısa Açıklaması")
+				@Html.TextAreaFor(x => x.Notification.Problem, new { @class = "form-control" })
+			</div>
+			<button class="btn btn-success glyphicon glyphicon-floppy-save pull-right"> Kaydet</button>
+		}
+	</div>
+</div>
+
+

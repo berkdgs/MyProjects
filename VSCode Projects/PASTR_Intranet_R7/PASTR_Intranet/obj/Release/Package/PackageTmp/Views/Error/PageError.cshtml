@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Hata";
+}
+
+<h2>Hata Aldınız!</h2>
+<div class="container">
+	<div class="alert alert-danger">
+		Hata Kodu: @Response.StatusCode
+	</div>
+	<div class="alert alert-danger">
+		Hata Sebebi: @ViewBag.Kaynak
+	</div> 
+</div>
+

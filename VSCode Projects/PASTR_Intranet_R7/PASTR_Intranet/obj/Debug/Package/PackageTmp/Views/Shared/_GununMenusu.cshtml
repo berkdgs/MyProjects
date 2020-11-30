@@ -1,0 +1,17 @@
+﻿@model IEnumerable<YemekMenu>
+<div class="panel panel-default">
+	<div class="panel-heading text-center"><b>Bugün Yemekte - ( @CultureInfo.GetCultureInfo("tr-TR").DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek) ) </b></div>
+	<div class="panel-body text-center">
+
+		@foreach (var item in Model)
+		{
+			for (int i = 0; i < item.Yemekler.Count; i++)
+			{
+				<p>@item.Yemekler[i] - @item.Kaloriler[i]</p>
+			}
+		}
+	</div>
+	<div class="panel-footer text-center">
+		<a class="btn bg-primary glyphicon glyphicon-eye-open" href="/home/AylikMenu"> Aylık Menü</a>
+	</div>
+</div>

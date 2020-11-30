@@ -1,0 +1,19 @@
+﻿.header{
+	padding:20px;
+	width:100%
+}
+.sticky{
+	position:fixed;
+	top:30px;
+	
+}
+.content{
+	padding:16px;
+}
+.sticky + .content{
+	padding-top:10px;
+}
+.top-container{
+	padding:10px;
+}
+

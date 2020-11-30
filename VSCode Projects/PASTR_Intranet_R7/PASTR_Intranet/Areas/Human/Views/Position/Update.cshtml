@@ -1,0 +1,18 @@
+﻿@model Position
+@{
+	ViewBag.Title = "Pozisyon Güncelle";
+}
+
+@using (Html.BeginForm("Update", "Position", new { area = "Human" }, FormMethod.Post))
+{
+	@Html.HiddenFor(x => x.Id)
+	<div class="form-group">
+		@Html.LabelFor(x => x.Name, "Ad")
+		@Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(x => x.Description, "Açıklama")
+		@Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+	</div>
+	<button class="btn btn-success" name="btnKaydet">Kaydet</button>
+}

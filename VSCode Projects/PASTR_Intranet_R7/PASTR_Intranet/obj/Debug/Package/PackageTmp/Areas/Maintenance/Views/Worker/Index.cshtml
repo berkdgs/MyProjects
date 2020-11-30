@@ -1,0 +1,60 @@
+﻿@model List<Worker>
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table table-striped">
+	<caption>
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+				<h2>Bakım Çalışanları</h2>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2" style="padding:20px;">
+				@Html.ActionLink("Çalışan Ekle", "Add", "Worker", new { area = "Maintenance" }, new { @class = "btn btn-success" })
+			</div>
+		</div>
+	</caption>
+	<thead>
+		<tr>
+			<th colspan="2"></th>
+			<th colspan="3" class="text-center">Oluşturma</th>
+			<th colspan="3" class="text-center">Değiştirme</th>
+			<th></th>
+		</tr>
+		<tr>
+			<th>Adı Soyadı</th>
+			<th>Yetkinlik</th>
+			<th>Toplam Bakım</th>
+			<th>Tarih</th>
+			<th>IP Adresi</th>
+			<th>Kullanıcı</th>
+			<th>Tarih</th>
+			<th>IP Adresi</th>
+			<th>Kullanıcı</th>
+			<th>İşlem</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.LongName</td>
+				<td>@item.Perfection</td>
+				<td>@(item.Operations != null ? item.Operations.Count : 0)</td>
+				<td>@item.CreatedDate</td>
+				<td>@item.CreatedComputerName</td>
+				<td>@item.CreatedUserName</td>
+				<td>@item.ModifiedDate</td>
+				<td>@item.ModifiedComputerName</td>
+				<td>@item.ModifiedUserName</td>
+				<td>
+					<a class="btn btn-info" href="/Maintenance/Operation/GetByPerson/@item.Id">Bakımlar</a>
+					<a class="btn btn-warning" href="/Maintenance/Worker/Update/@item.Id">Değiştir</a>
+					<a class="btn btn-danger" href="/Maintenance/Worker/Delete/@item.Id">Sil</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+

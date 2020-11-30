@@ -1,0 +1,62 @@
+﻿@model List<Department>
+@{
+    ViewBag.Title = "Departmanlar";
+}
+
+<table class="table table-striped">
+	<caption>
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+				<H2>Departmanlar</H2>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2" style="padding:20px;">
+				<form action="/Human/Department/Add" method="get">
+					<button class="btn btn-success" value="Departman Ekle" name="btnDepartmanEkle">Departman Ekle</button>
+				</form>
+			</div>
+		</div>
+		
+	</caption>
+	<thead>
+		<tr>
+			<th colspan="2"></th>
+			<th colspan="3" style="text-align:center">Oluşturma</th>
+			<th colspan="3" style="text-align:center">Değiştirme</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th>Departman</th>
+			<th>Açıklama</th>
+			<th>Tarih</th>
+			<th>Bilgisayar</th>
+			<th>Kullanıcı</th>
+			<th>Tarih</th>
+			<th>Bilgisayar</th>
+			<th>Tarih</th>
+			<th>Çalışan Sayısı</th>
+			<th>İşlem</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Description</td>
+				<td>@item.CreatedDate</td>
+				<td>@item.CreatedComputerName</td>
+				<td>@item.CreatedUserName</td>
+				<td>@item.ModifiedDate</td>
+				<td>@item.ModifiedComputerName</td>
+				<td>@item.ModifiedUserName</td>
+				<td>@item.People.Count(x => x.Status != NTier.Core.Enums.Status.Deleted).ToString()</td>
+				<td>
+					<a class="btn btn-danger" href="@Url.Action("Delete", "Department", new { id = item.Id } )">Sil</a>
+					<a class="btn btn-warning" href="@Url.Action("Update", "Department", new { id = item.Id })">Değiştir</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+

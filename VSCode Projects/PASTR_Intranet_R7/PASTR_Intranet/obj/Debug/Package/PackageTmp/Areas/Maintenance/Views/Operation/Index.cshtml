@@ -1,0 +1,56 @@
+﻿@model List<Operation>
+@{
+	ViewBag.Title = "Bakım/Arıza İşlemleri";
+}
+
+<table class="table table-striped">
+	<caption>
+		<h2>Bakım İşlemleri</h2>
+	</caption>
+	<thead>
+		<tr>
+			<th>Makine Adı</th>
+			<th>Problem</th>
+			<th>Yapılan İşlem</th>
+			<th>Bakım Yapan</th>
+			<th>Açılış Tarihi</th>
+			<th>Kapanış Tarihi</th>
+			<th>Durum</th>
+			<th>Süre</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			TimeSpan? totalTime = item.ModifiedDate - item.CreatedDate;
+			String statu = null;
+			switch (item.ProcessStatu)
+			{
+				case ProcessStatu.Suruyor:
+					statu = "Sürüyor";
+					break;
+				case ProcessStatu.ParcaBekliyor:
+					statu = "Parça Bekliyor";
+					break;
+				case ProcessStatu.OnayBekliyor:
+					statu = "Onay Bekliyor";
+					break;
+				case ProcessStatu.Tamamlandi:
+					statu = "Tamamlandı";
+					break;
+			}
+			<tr>
+				<td>@item.Machine.Name</td>
+				<td>@item.Notification.Problem</td>
+				<td>@item.Process</td>
+				<td>@item.Worker.LongName</td>
+				<td>@item.CreatedDate</td>
+				<td>@item.ModifiedDate</td>
+				<td>@statu </td>
+				<td>@(totalTime == null ? totalTime.ToString() : totalTime.Value.ToString("G"))</td>
+			</tr>
+		}
+
+	</tbody>
+</table>

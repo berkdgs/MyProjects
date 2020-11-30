@@ -1,0 +1,49 @@
+﻿@model Person
+@{
+	ViewBag.Title = "Personel Düzenle";
+}
+
+<h2>Çalışan Bilgileri Değiştir</h2>
+<div class="row">
+	<div class="col-md-3 col-gl-3 col-xs-5 col-sm-4">
+		@using (Html.BeginForm("Update", "Home", new { area = "Human" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+		{
+			<div class="form-group">
+				@Html.LabelFor(x => x.Name, "Adı:")
+				@Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.LastName, "Soyadı:")
+				@Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.TCKN, "T.C. Kimlik No:")
+				@Html.TextBoxFor(x => x.TCKN, new { @class = "form-control" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.Gender, "Cinsiyeti: Erkek ?")
+				@Html.CheckBoxFor(x => x.Gender)
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.BirthDate, "Doğum Tarihi:")
+				@Html.TextBoxFor(x => x.BirthDate, new { type = "date", @class = "form-control", Value = Model.BirthDate.ToString("yyyy-MM-dd"), max = DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd") })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.DepartmentId, "Departmanı Seçiniz...")
+				@Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)TempData["Departments"], new { @class = "form-control" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.PositionId, "Pozisyonu Seçiniz...")
+				@Html.DropDownListFor(x => x.PositionId, (List<SelectListItem>)TempData["Positions"], new { @class = "form-control" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(x => x.ImagePath, "Fotoğrafı Seçiniz...")
+				@Html.TextBox("image", Model.ImagePath, new { type = "file", value = Model.ImagePath.ToString(), FileName = "Test.jgp", @class = "form-control", onload = "$('#image').text = windows.URL.createObjectURL(this.files[0])", onchange = "$('#imagePerson')[0].src = window.URL.createObjectURL(this.files[0])" })
+			</div>
+			<button class="btn btn-success" name="btnKaydet">Kaydet</button>
+		}
+	</div>
+	<div class="col-md-4 col-lg-4 col-xs-6 col-sm-5">
+		<img id="imagePerson" src="@Model.ImagePath" alt="@Model.LastName@Model.Name" width="300" height="400" style="margin-top:23px;" />
+	</div>
+</div>
