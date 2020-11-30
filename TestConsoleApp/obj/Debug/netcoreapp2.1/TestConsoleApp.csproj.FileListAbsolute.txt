@@ -1,0 +1,11 @@
+D:\Downloads\VS Code Projects\TestConsoleApp\bin\Debug\netcoreapp2.1\TestConsoleApp.deps.json
+D:\Downloads\VS Code Projects\TestConsoleApp\bin\Debug\netcoreapp2.1\TestConsoleApp.runtimeconfig.json
+D:\Downloads\VS Code Projects\TestConsoleApp\bin\Debug\netcoreapp2.1\TestConsoleApp.runtimeconfig.dev.json
+D:\Downloads\VS Code Projects\TestConsoleApp\bin\Debug\netcoreapp2.1\TestConsoleApp.dll
+D:\Downloads\VS Code Projects\TestConsoleApp\bin\Debug\netcoreapp2.1\TestConsoleApp.pdb
+D:\Downloads\VS Code Projects\TestConsoleApp\obj\Debug\netcoreapp2.1\TestConsoleApp.csprojAssemblyReference.cache
+D:\Downloads\VS Code Projects\TestConsoleApp\obj\Debug\netcoreapp2.1\TestConsoleApp.csproj.CoreCompileInputs.cache
+D:\Downloads\VS Code Projects\TestConsoleApp\obj\Debug\netcoreapp2.1\TestConsoleApp.AssemblyInfoInputs.cache
+D:\Downloads\VS Code Projects\TestConsoleApp\obj\Debug\netcoreapp2.1\TestConsoleApp.AssemblyInfo.cs
+D:\Downloads\VS Code Projects\TestConsoleApp\obj\Debug\netcoreapp2.1\TestConsoleApp.dll
+D:\Downloads\VS Code Projects\TestConsoleApp\obj\Debug\netcoreapp2.1\TestConsoleApp.pdb
